@@ -1,0 +1,23 @@
+{
+  "name": "secure-api-lab",
+  "version": "1.0.0",
+  "description": "Лабораторная работа №3 — защищённый REST API на Node.js и Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-client.js"
+  },
+  "keywords": [
+    "express",
+    "rest",
+    "lab"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
