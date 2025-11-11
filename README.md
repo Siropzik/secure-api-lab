@@ -50,12 +50,18 @@ secure-api-lab/
 
 ## 3. Опис REST API
 
-| Метод  | Ендпоінт         | Опис                           | Заголовки (Auth)     | Роль       | Тіло запиту                            | Коди |
-|-------|------------------|--------------------------------|----------------------|------------|----------------------------------------|------|
-| GET   | /documents       | Отримати список документів     | X-Login, X-Password | user/admin | -                                      | 200, 401 |
-| POST  | /documents       | Створити документ              | X-Login, X-Password | user/admin | `{ "title": "...", "content": "..." }` | 201, 400, 401 |
-| GET   | /employees       | Отримати список співробітників | X-Login, X-Password | admin      | -                                      | 200, 401, 403 |
-| DELETE| /documents/:id   | Видалити документ              | X-Login, X-Password | admin      | -                                      | 204, 401, 403, 404 |
+| Метод  | Ендпоінт           | Опис дії                                  | Заголовки (Auth)               | Роль        | Тіло запиту                                | Коди відповіді |
+|--------|-------------------|-------------------------------------------|--------------------------------|-------------|--------------------------------------------|----------------|
+| GET    | /documents        | Отримати список документів                | X-Login, X-Password            | user/admin  | -                                          | 200 OK         |
+| GET    | /documents        | Доступ без авторизації                    | _відсутні_                     | -           | -                                          | 401 Unauthorized |
+| POST   | /documents        | Створити документ                         | X-Login, X-Password            | user/admin  | { "title": "...", "content": "..." }       | 201 Created    |
+| POST   | /documents        | Створення з помилкою (без title або content) | X-Login, X-Password          | user/admin  | { "content": "..." }                       | 400 Bad Request |
+| GET    | /employees        | Отримати список співробітників (admin)    | X-Login, X-Password            | admin       | -                                          | 200 OK         |
+| GET    | /employees        | Спроба доступу user до admin ресурсу      | X-Login, X-Password            | user        | -                                          | 403 Forbidden  |
+| DELETE | /documents/:id    | Видалити документ (admin)                 | X-Login, X-Password            | admin       | -                                          | 204 No Content |
+| DELETE | /documents/:id    | Видалення неіснуючого документа           | X-Login, X-Password            | admin       | -                                          | 404 Not Found  |
+| GET    | /будь-що-інше     | Звернення до неіснуючого маршруту         | будь-які або відсутні          | будь-хто    | -                                          | 404 Not Found  |
+
 
 ---
 
