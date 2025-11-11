@@ -82,8 +82,9 @@ secure-api-lab/
 ### 5) POST /documents без title — 400 Bad Request
 ![](./screenshots/post-documents-no-title.png)
 
-### 6) DELETE /documents/:id — 204 No Content (admin)
-![](./screenshots/delete-documentsid.png)
+6) DELETE /documents/:id — 204 No Content (admin)
+![DELETE document (admin)](./screenshots/delete-document.png)
+
 
 ### 7) GET /documents без заголовків — 401 Unauthorized
 ![](./screenshots/get-documents-no-headers.png)
